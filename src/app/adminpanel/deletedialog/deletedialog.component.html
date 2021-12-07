@@ -1,0 +1,26 @@
+<p>deletedialog works!</p>
+
+<ng-template #secondDialog>
+  <div style="width: 522px;">
+  <div class="row">
+    <div class="col d-flex">
+  <h2 class="col-7 aether-delete-title">Are you sure you want to delete the user?</h2>
+  <div class="col-3"></div>
+  <img class="col-2 aether-delete-close" src="../../assets/AdminPanel/xclose.svg"/>
+</div>
+</div>
+  <mat-dialog-content>
+    <p>
+
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions class="mx-5" align="end">
+    <button mat-button matDialogClose class="aether-AddNew-Form-Upload mx-3">
+      No, Cancel
+    </button>
+    <!-- <button mat-button matDialogClose class="btn btn-danger" (click)="confirmDelete(i)"> -->
+      Yes, Delete
+    <!-- </button> -->
+  </mat-dialog-actions>
+  </div>
+</ng-template>

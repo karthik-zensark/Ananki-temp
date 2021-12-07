@@ -1,0 +1,760 @@
+<app-navbar></app-navbar>
+
+<!-- <h3>Admin panel works..</h3> -->
+<div class="row container-fluid my-5">
+  <!-- <div class="col-1"></div> -->
+  <mat-card class="aether-sideCol-NavCard col-2">
+    <mat-card-header class="my-2">
+      <mat-card-title class="aether-sideCol-NavCard-siteSelector"
+        >Site:
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-header>
+      <mat-card-title class="aether-sideCol-NavCard-Headings"
+        >MANAGE</mat-card-title
+      >
+    </mat-card-header>
+    <img
+      class="aether-sideCol-NavCard-controlLine"
+      src="../../assets/CommonAssets/ControlMenuLine.svg"
+    />
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon class="aether-sideCol-NavCard-subIcon"
+          >account_circle</mat-icon
+        >
+      </div>
+      <mat-card-title class="aether-sideCol-NavCard-subHeading"
+        >Admin</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <!-- <mat-icon>sim_card</mat-icon> -->
+        <mat-icon>
+          <img src="../../assets/SideCol-Navbar/devices.svg" />
+        </mat-icon>
+      </div>
+      <mat-card-title class="aether-sideCol-NavCard-subHeading"
+        >Devices / Sims</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>layers</mat-icon>
+      </div>
+      <mat-card-title class="aether-sideCol-NavCard-subHeading"
+        >Services</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-header>
+      <mat-card-title class="aether-sideCol-NavCard-Headings"
+        >CONFIGURE</mat-card-title
+      >
+    </mat-card-header>
+    <img
+      class="aether-sideCol-NavCard-controlLine"
+      src="../../assets/CommonAssets/ControlMenuLine.svg"
+    />
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>wifi_tethering</mat-icon>
+      </div>
+      <mat-card-title class="aether-sideCol-NavCard-subHeading"
+        >Small Cells</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>devices_other</mat-icon>
+      </div>
+      <mat-card-title class="aether-sideCol-NavCard-subHeading"
+        >Device Groups</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>filter_none</mat-icon>
+      </div>
+      <mat-card-title class="aether-sideCol-NavCard-subHeading"
+        >Slices</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-header>
+      <mat-card-title class="aether-sideCol-NavCard-Headings"
+        >REPORTS</mat-card-title
+      >
+    </mat-card-header>
+    <img
+      class="aether-sideCol-NavCard-controlLine"
+      src="../../assets/CommonAssets/ControlMenuLine.svg"
+    />
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>filter_none</mat-icon>
+      </div>
+      <mat-card-title class="aether-sideCol-NavCard-subHeading"
+        >Audit</mat-card-title
+      >
+    </mat-card-header>
+  </mat-card>
+  <div class="col container-fluid UsersPanel mx-2">
+    <div class="aether-AddUser-div my-1 col-12 mx-3">
+      <!-- <mat-card class="aether-AddUser-Card col-12 d-flex my-1" *ngIf="!AddNew">
+        <div>
+          <button
+            class="btn col-3 aether-AddUser-btnCenter"
+            (click)="AddNew = !AddNew"
+          >
+            + Add new user
+          </button>
+        </div>
+      </mat-card> -->
+
+      <!-- Add New User Form Starts -->
+      <form [formGroup]="userForm">
+        <mat-card
+          class="col-12 aether-AddNew-div my-1"
+          *ngIf="AddNew"
+          [@inOutAnimation]
+        >
+          <mat-card-title class="aether-AddNew-Title my-4 mx-4"
+            >Add new user</mat-card-title
+          >
+          <mat-card-content>
+            <div class="aether-AddNew-Form my-4 mx-2 d-flex">
+              <div class="aether-AddNew-Form-ppicDiv col-2 mx-3">
+                <div class="aether-AddNew-Form-Profile mx-2 my-4">
+                  <img
+                    src="../../assets/AdminPanel/p-pic-outline.svg"
+                    alt="profile-pic-outline"
+                  />
+                  <br />
+                  <button
+                    mat-button
+                    class="aether-AddNew-Form-Upload my-4 mx-5"
+                  >
+                    Upload
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="row">
+                  <div class="col-12 my-3">
+                    <div id="new-form" class="col-12 my-2 d-flex">
+                      <div class="">
+                        <mat-label class="aether-AddNew-Form-Label" for="name"
+                          >Enter user name</mat-label
+                        >
+                        <br />
+                        <mat-form-field
+                          class="aether-AddNew-Form-Field"
+                          appearance="fill"
+                        >
+                          <input
+                            class="form-control"
+                            matInput
+                            type="text"
+                            formControlName="name"
+                            name="newuserName"
+                            id="newuserName"
+                            placeholder="Name"
+                          />
+                        </mat-form-field>
+                      </div>
+                      <div class="mx-4">
+                        <mat-label class="aether-AddNew-Form-Label" for="email"
+                          >Enter Email ID</mat-label
+                        >
+                        <br />
+                        <mat-form-field
+                          class="aether-AddNew-Form-Field"
+                          appearance="fill"
+                        >
+                          <input
+                            type="email"
+                            matInput
+                            type="text"
+                            name="email"
+                            id="email"
+                            class="form-control"
+                            required
+                            formControlName="email"
+                            [formControl]="emailFormControl"
+                            placeholder="Email ID"
+                          />
+                          <mat-error
+                            *ngIf="
+                              emailFormControl.hasError('email') &&
+                              !emailFormControl.hasError('required')
+                            "
+                          >
+                            Please enter a valid email address
+                          </mat-error>
+                          <mat-error
+                            *ngIf="emailFormControl.hasError('required')"
+                          >
+                            Email is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+
+                        <div class="col-5">
+                          <mat-checkbox
+                            class="aether-AddNew-Form-CheckBox"
+                            [(ngModel)]="checked"
+                            [color]="task.color"
+                            [ngModelOptions]="{ standalone: true }"
+                            >Send email alerts to my email</mat-checkbox
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>Select Access Level</div>
+                <div class="col-7 d-flex" style="flex-wrap: wrap;">
+                  <div class="d-flex mx-2" *ngFor="let city of cities, let cityIndex = index">
+                    <mat-form-field style="width: 140px;">
+                      <div class="col-8">
+                        <mat-label>{{ city.name }}</mat-label>
+                      </div>
+                      <div
+                        class="btn aether-AddNew-Form-permissions my-3"
+                        appearance="fill"
+                      >
+                        <mat-label></mat-label>
+                        <mat-select class="aether-AddNew-Form-permissionsSelect"[formControl]="getControl(cityIndex)">
+                          <mat-option
+                            [value]="permissionIndex"
+                            *ngFor="
+                              let permission of permissions;
+                              let permissionIndex = index
+                            "
+
+                            >{{ permission.viewValue }}</mat-option
+                          >
+
+                          <!-- <mat-option [value]="1">R</mat-option>
+                        <mat-option [value]="2">W</mat-option>
+                        <mat-option [value]="3">R/W</mat-option> -->
+                        </mat-select>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              class="AddNew-submit"
+              type="submit"
+              mat-raised-button
+              color="primary"
+              (click)="AddNew = !AddNew; onSubmit(); assignUsersCities();"
+            >
+              Add
+            </button>
+            <button mat-button class="AddNew-cancel" (click)="AddNew = !AddNew">
+              Cancel
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+
+      <!-- View Defining and switching row. -->
+      <div class="row">
+        <div class="d-flex aether-Users-switchDiv">
+          <div class="col-10 aether-UsersPanel-Title" *ngIf="userViewToggle">
+            Users
+          </div>
+          <div class="col-10 aether-UsersPanel-Title" *ngIf="siteViewToggle">
+            Site
+          </div>
+
+          <div class="col-3 d-flex">
+            <div class="aether-Users-Switch-Text mt-2">Filter by</div>
+            <div class="mx-4">
+              <button
+                class="aether-Users-Switch"
+                (click)="siteView()"
+                [ngClass]="siteViewStyle == 'true' ? 'highlight' : 'normal'"
+              >
+                Site
+              </button>
+              <button
+                class="aether-Users-Switch"
+                (click)="userView()"
+                [ngClass]="userViewStyle == 'true' ? 'highlight' : 'normal'"
+              >
+                User
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <mat-card class="aether-AddUser-Card col-12 d-flex my-4" *ngIf="!AddNew">
+        <div>
+          <button
+            class="btn col-3 aether-AddUser-btnCenter"
+            (click)="AddNew = !AddNew"
+          >
+            + Add new user
+          </button>
+        </div>
+      </mat-card>
+
+      <!-- User View -->
+      <div class="my-3" *ngIf="userViewToggle">
+        <div *ngFor="let user of users; let i = index">
+          <mat-card class="aether-Users-Card col-12 d-flex my-3">
+            <div
+              class="col-12 d-flex my-2"
+              (click)="toggle === i ? (toggle = null) : (toggle = i)"
+            >
+              <div class="mx-3 d-flex" style="margin-top: -5px">
+                <img src="{{ user.ppic }}" height="56px" /><sup
+                  ><img
+                    class="aether-Users-Card-active"
+                    src="{{ user.active }}"
+                /></sup>
+              </div>
+
+              <div class="col-1 aether-Users-Card-username mx-2">
+                {{ user.name }}
+              </div>
+              <div class="col-3 aether-Users-Card-email">{{ user.email }}</div>
+              <div class="col-5 mx-4 aether-Users-Card-Cities">
+                <div class="d-flex">
+                  <div
+                    class="city-image-container mx-1"
+                    *ngFor="let city of user.cities"
+                  >
+                    <img
+                      *ngIf="city.name == 'Fremont, CA'"
+                      class="city-image"
+                      src="../../assets/AdminPanel/fremont.svg"
+                    />
+                    <img
+                      *ngIf="city.name == 'Bengaluru, IN'"
+                      class="city-image"
+                      src="../../assets/AdminPanel/berlin.svg"
+                    />
+                    <img
+                      *ngIf="city.name == 'NYC, NY'"
+                      class="city-image"
+                      src="../../assets/AdminPanel/nyc.svg"
+                    />
+                    <img
+                      *ngIf="city.name == 'Austin, TX'"
+                      class="city-image"
+                      src="../../assets/AdminPanel/austin.svg"
+                    />
+                    <img
+                      *ngIf="city.name == 'Berlin, DE'"
+                      class="city-image"
+                      src="../../assets/AdminPanel/berlin.svg"
+                    />
+                    <div class="access-text-block">
+                      {{ permissions[city.accessLevel].viewValue }}
+                    </div>
+                    <span class="city-text-block">{{ city.name }}</span>
+                  </div>
+                  <!-- <div
+                    style="
+                      margin-top: -2px;
+                      margin-left: 11px;
+                      padding-left: 33px;
+                      width: 78px;
+                      background-color: #0063f7;
+                      color: white;
+                      z-index: 2;
+                    "
+                  >
+                    {{ user.accessLevel }}
+
+                    {{ user.city }}
+                  </div> -->
+                </div>
+              </div>
+              <div
+                class="col-1 aether-Users-Card-EditOption"
+                (click)="editClick(i)"
+                *ngIf="!EditUser"
+              >
+                <img src="../../assets/AdminPanel/pencil.svg" />
+                Edit
+              </div>
+              <div
+                class="col-1 aether-Users-Card-EditOption-close"
+                (click)="editClick(i)"
+                *ngIf="EditUser"
+              >
+                Close
+              </div>
+            </div>
+          </mat-card>
+
+          <!-- Edit form panel (User-View) -->
+          <form [formGroup]="editForm">
+            <div *ngIf="EditUser && toggle == i">
+              <mat-card class="col aether-AddNew-div">
+                <mat-card-content>
+                  <div class="aether-AddNew-Form my-4 mx-2 d-flex">
+                    <div class="aether-AddNew-Form-ppicDiv col-2 mx-3">
+                      <div class="aether-AddNew-Form-Profile mx-2 my-4">
+                        <img
+                          src="../../assets/AdminPanel/Rectangle 966.svg"
+                          alt="profile-pic-outline"
+                        />
+                        <br />
+                        <button
+                          mat-button
+                          class="aether-AddNew-Form-Upload my-4 mx-5"
+                        >
+                          <img
+                            class="mx-2"
+                            src="../../assets/AdminPanel/uploadArrow.svg"
+                          />
+                          Upload
+                        </button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="row">
+                        <div class="col-12 my-3">
+                          <div id="new-form" class="col-12 my-2 d-flex">
+                            <div class="">
+                              <mat-label class="aether-AddNew-Form-Label"
+                                >Enter your user name</mat-label
+                              >
+                              <br />
+                              <mat-form-field
+                                class="aether-AddNew-Form-Field"
+                                appearance="fill"
+                              >
+                                <input
+                                  class="form-control"
+                                  matInput
+                                  type="text"
+                                  name="newuserName"
+                                  id="newuserName"
+                                  placeholder="Name"
+                                  required
+                                  formControlName="name"
+                                />
+                              </mat-form-field>
+                            </div>
+                            <div class="mx-4">
+                              <mat-label class="aether-AddNew-Form-Label"
+                                >Enter email ID</mat-label
+                              >
+                              <br />
+                              <mat-form-field
+                                class="aether-AddNew-Form-Field"
+                                appearance="fill"
+                              >
+                                <input
+                                  type="email"
+                                  matInput
+                                  type="text"
+                                  name="email"
+                                  id="email"
+                                  class="form-control"
+                                  required
+                                  formControlName="email"
+                                  [formControl]="emailFormControl"
+                                  placeholder="Email ID"
+                                />
+                                <mat-error
+                                  *ngIf="
+                                    emailFormControl.hasError('email') &&
+                                    !emailFormControl.hasError('required')
+                                  "
+                                >
+                                  Please enter a valid email address
+                                </mat-error>
+                                <mat-error
+                                  *ngIf="emailFormControl.hasError('required')"
+                                >
+                                  Email is <strong>required</strong>
+                                </mat-error>
+                              </mat-form-field>
+                              <div class="col-5">
+                                <mat-checkbox
+                                  class="aether-AddNew-Form-CheckBox"
+                                  [(ngModel)]="checked"
+                                  [ngModelOptions]="{ standalone: true }"
+                                  [color]="task.color"
+                                  >Send email alerts to my email</mat-checkbox
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Checkboxes start -->
+                      <!-- Mail checkbox -->
+
+                      <div class="row">
+                        <div class="aether-AddNew-Form-permissionsMainTitle">
+                          Select Access Level
+                        </div>
+                        <div class="row">
+                          <div class="col-12 d-flex">
+                            <div class="col-5">
+                              <div class="col-3" *ngFor="let city of cities, let cityIndex = index">
+                                <div class="col-3">
+                                  <mat-label>{{ city.name }}</mat-label>
+                                </div>
+                                <div>
+                                  <mat-form-field appearance="outline">
+                                    <mat-label> </mat-label>
+                                    <mat-select [formControl]="getControlEdit(cityIndex)">
+                                      <!-- <mat-option
+                                        [value]="permission.value"
+                                        *ngFor="let permission of permissions"
+                                        >{{ permission.viewValue }}</mat-option
+                                      > -->
+                                      <mat-option
+                                        [value]="permissionIndex"
+                                        *ngFor="
+                                          let users1 of city.users;
+                                          let permission;
+                                          of: permissions;
+                                          let permissionIndex = index
+                                        "
+                                        >{{ permission.viewValue }}</mat-option
+                                      >
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Grouped Checkboxes -->
+                            <!-- Main Checkbox (to check all subCheckboxes) -->
+
+                            <div
+                              class="col-5 d-flex"
+                              style="margin-left: 8rem !important"
+                            >
+                              <div class="row">
+                                <div class="col-12">Select Alert Category</div>
+
+                                <br />
+                                <!-- Sub Checkboxes -->
+
+                                <div
+                                  class="col-12 aether-AddNew-Form-subChecksDiv"
+                                >
+                                  <div class="row">
+                                    <div class="col-5 d-flex">
+                                      <mat-checkbox
+                                        class="aether-AddNew-Form-subChecks"
+                                      >
+                                        Device
+                                      </mat-checkbox>
+                                      <mat-checkbox
+                                        class="
+                                          aether-AddNew-Form-subChecks
+                                          mx-4
+                                        "
+                                      >
+                                        Central
+                                      </mat-checkbox>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-5 d-flex">
+                                      <mat-checkbox
+                                        class="aether-AddNew-Form-subChecks"
+                                      >
+                                        Site Equipment
+                                      </mat-checkbox>
+                                      <mat-checkbox
+                                        class="
+                                          aether-AddNew-Form-subChecks
+                                          mx-4
+                                        "
+                                      >
+                                        Security
+                                      </mat-checkbox>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button class="" (click)="EditUser = !EditUser">
+                    Temp Cancel
+                  </button>
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    color="primary"
+                    (click)="onEdit(i); assignUsersCities()"
+                  >
+                    submit
+                  </button>
+                  <button type="button" (click)="confirmDelete(i)">
+                    delete
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- site-view -->
+      <div class="my-3" *ngIf="siteViewToggle">
+        <div *ngFor="let sites of cities">
+          <mat-card class="col-12 d-flex my-2">
+            <div class="col-12 d-flex">
+              <div class="col-1 mx-4 aether-Users-Card-Cities">
+                <div class="">
+                  <div class="city-image-container">
+                    <div
+                      class="access-text-block"
+                      *ngFor="let sites1 of sites.users"
+                    >
+                      {{ permissions[sites1.accessLevel].viewValue }}
+                    </div>
+                    <img
+                      *ngIf="sites.id === 1"
+                      class="city-image"
+                      src="../../assets/AdminPanel/fremont.svg"
+                    />
+                    <img
+                      *ngIf="sites.id === 2"
+                      class="city-image"
+                      src="../../assets/AdminPanel/bengaluru.svg"
+                    />
+                    <img
+                      *ngIf="sites.id === 3"
+                      class="city-image"
+                      src="../../assets/AdminPanel/nyc.svg"
+                    />
+                    <img
+                      *ngIf="sites.id === 4"
+                      class="city-image"
+                      src="../../assets/AdminPanel/austin.svg"
+                    />
+                    <img
+                      *ngIf="sites.id === 5"
+                      class="city-image"
+                      src="../../assets/AdminPanel/berlin.svg"
+                    />
+
+                    <span class="city-text-block">{{ sites.name }}</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="vl"
+                style="border-left: 1px solid #97c1ff; height: auto"
+              ></div>
+              <div><img src="../../assets/AdminPanel/siteview-hline.svg"/></div>
+              <!-- <div class="users" *ngFor="let user of users"> -->
+              <div
+                class="siteUsers col-2 mx-3"
+                *ngFor="let sites1 of sites.users"
+              >
+                <div class="row">
+                  <div class="col-12 d-flex">
+                    <div class="col-1">
+                      <img src="{{ users[sites1.userId - 1].ppic }}" />
+                    </div>
+                    <div class="col siteUsersText">
+                      <div class="col d-flex">
+                        <div class="siteUsersName mx-2">
+                          {{ users[sites1.userId - 1].name }}
+                        </div>
+                        <div class="siteView-userAccessLevel">
+                          {{ permissions[sites1.accessLevel].viewValue }}
+                        </div>
+                      </div>
+                      <div class="">{{ users[sites1.userId - 1].email }}</div>
+                    </div>
+                    <img
+                      (click)="confirmDelCity(sites1.userId)"
+                      src="../../assets/AdminPanel/siteViewEdit-del.svg"
+                      height="7.69px"
+                      width="7.69px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- </div> -->
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- test purpose -->
+<div *ngFor="let user of users; let i = index">
+  <button (click)="getUserById(i)">get user by id {{ i }}</button>
+</div>
+
+<button (click)="test()">test</button>
+
+<button (click)="testc()">test c</button>
+
+<button (click)="assignUsersCities()">assign</button>
+
+<!-- <mat-checkbox
+                            class="example-margin"
+                            [checked]="allComplete"
+                            [color]="task.color"
+                            [indeterminate]="someComplete()"
+                            (change)="setAll($event.checked)"
+                          >
+                            {{ task.name }}
+                          </mat-checkbox> -->
+
+<!-- <mat-form-field appearance="outline" class="signupInput">
+  <mat-label class="selectFontText"></mat-label>
+  <mat-select formControlName="qualification" class="selectFontText">
+    <mat-option value="0" class="selectFontText">Below 10th</mat-option>
+    <mat-option value="1" class="selectFontText">Studying 10th</mat-option>
+    <mat-option value="2" class="selectFontText">Completed 10th</mat-option>
+    <mat-option value="3" class="selectFontText"
+      >Studying Inter/12th/PUC</mat-option
+    >
+    <mat-option value="4" class="selectFontText"
+      >Completed Inter/12th/PUC</mat-option
+    >
+    <mat-option value="5" class="selectFontText">Studying ITI</mat-option>
+    <mat-option value="6" class="selectFontText">Completed ITI</mat-option>
+    <mat-option value="7" class="selectFontText">Studying Diploma</mat-option>
+    <mat-option value="8" class="selectFontText">Completed Diploma'</mat-option>
+    <mat-option value="9" class="selectFontText"
+      >Studying Graduation</mat-option
+    >
+    <mat-option value="10" class="selectFontText"
+      >Completed Graduation</mat-option
+    >
+    <mat-option value="11" class="selectFontText"
+      >Studying Technical Graduation</mat-option
+    >
+    <mat-option value="12" class="selectFontText"
+      >Completed Technical Graduation</mat-option
+    >
+    <mat-option value="13" class="selectFontText">Studying PG</mat-option>
+    <mat-option value="14" class="selectFontText">Completed PG</mat-option>
+    <mat-option value="15" class="selectFontText">Other</mat-option>
+  </mat-select>
+</mat-form-field> -->
